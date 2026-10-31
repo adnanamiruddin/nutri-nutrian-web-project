@@ -4,8 +4,20 @@ import ResultSlip, { ResultRow } from "@/components/ui/ResultSlip";
 import SaveBar from "@/components/ui/SaveBar";
 import usePatientForm from "@/components/ui/usePatientForm";
 import {
-  ACTIVITY_FACTORS, BMR_FORMULAS, STRESS_FACTORS, adjustedBW, bmi, burnStressFactor, espenCritical,
-  fmt, ibwBroca, isPos, macroSplit, num, recommendFormula, tee,
+  ACTIVITY_FACTORS,
+  BMR_FORMULAS,
+  STRESS_FACTORS,
+  adjustedBW,
+  bmi,
+  burnStressFactor,
+  espenCritical,
+  fmt,
+  ibwBroca,
+  isPos,
+  macroSplit,
+  num,
+  recommendFormula,
+  tee,
 } from "@/utils/formulas";
 
 const WEIGHT_BASIS = [
@@ -16,7 +28,6 @@ const WEIGHT_BASIS = [
 ];
 
 export default function BmrCalculator() {
-  
   const [form, set] = usePatientForm({
     bodyFat: "",
     critical: false,
@@ -39,15 +50,33 @@ export default function BmrCalculator() {
     if (!isPos(w, h) || !(age >= 0) || Number.isNaN(age)) return null;
 
     const b = bmi(w, h);
-    const ibw = ibwBroca(h, form.sex).value;
-    const adj = adjustedBW(w, ibw).value;
-    const rec = recommendFormula({ age, bmiValue: b, bodyFat: bf, critical: form.critical });
+    const ibwResult = ibwBroca(h, form.sex);
+    const ibw = ibwResult?.value ?? null;
+    const adjResult = adjustedBW(w, ibw);
+    const adj = adjResult?.value ?? null;
+    const rec = recommendFormula({
+      age,
+      bmiValue: b,
+      bodyFat: bf,
+      critical: form.critical,
+    });
     const key = form.formula === "auto" ? rec.key : form.formula;
 
     let basisKey = form.basis;
-    if (basisKey === "auto") basisKey = form.formula === "auto" && rec.useAdjusted ? "adjusted" : "actual";
+    if (basisKey === "auto")
+      basisKey =
+        form.formula === "auto" && rec.useAdjusted ? "adjusted" : "actual";
     const basisW = { actual: w, ibw, adjusted: adj }[basisKey];
-    const basisLabel = { actual: "BB aktual", ibw: "BB ideal", adjusted: "Adjusted BW" }[basisKey];
+    if (!Number.isFinite(basisW) || basisW <= 0) {
+      return {
+        error: "Dasar berat badan tidak valid. Periksa kembali BB dan TB.",
+      };
+    }
+    const basisLabel = {
+      actual: "BB aktual",
+      ibw: "BB ideal",
+      adjusted: "Adjusted BW",
+    }[basisKey];
 
     // Faktor stres
     let fs = STRESS_FACTORS.find((s) => s.key === form.stress)?.value ?? 1;
@@ -62,27 +91,68 @@ export default function BmrCalculator() {
       bmrRes = null;
     } else {
       const f = BMR_FORMULAS[key];
-      bmrRes = f.fn({ weight: basisW, height: h, age, sex: form.sex, bodyFat: bf });
-      if (!bmrRes) return { error: key === "katch" ? "Katch-McArdle membutuhkan % lemak tubuh." : "Data belum lengkap." };
+      bmrRes = f.fn({
+        weight: basisW,
+        height: h,
+        age,
+        sex: form.sex,
+        bodyFat: bf,
+      });
+      if (!bmrRes)
+        return {
+          error:
+            key === "katch"
+              ? "Katch-McArdle membutuhkan % lemak tubuh."
+              : "Data belum lengkap.",
+        };
       teeRes = tee(bmrRes.value, fa, fs);
     }
     if (!teeRes) return null;
 
     const proteinG = (num(form.proteinPerKg) || 0) * basisW;
-    const macro = macroSplit(teeRes.value, { proteinGram: proteinG, fatPct: num(form.fatPct) || 25 });
+    const macro = macroSplit(teeRes.value, {
+      proteinGram: proteinG,
+      fatPct: num(form.fatPct) || 25,
+    });
 
     // Perbandingan semua rumus (BB yang sama)
     const compare = Object.entries(BMR_FORMULAS).map(([k, f]) => {
-      const res = f.fn({ weight: basisW, height: h, age, sex: form.sex, bodyFat: bf });
-      return { key: k, label: f.label, bmr: res?.value ?? null, tee: res ? res.value * fa * fs : null };
+      const res = f.fn({
+        weight: basisW,
+        height: h,
+        age,
+        sex: form.sex,
+        bodyFat: bf,
+      });
+      return {
+        key: k,
+        label: f.label,
+        bmr: res?.value ?? null,
+        tee: res ? res.value * fa * fs : null,
+      };
     });
 
     return {
-      b, ibw, adj, rec, key, basisW, basisLabel, fa, fs, bmrRes, teeRes, macro, compare, proteinG,
+      b,
+      ibw,
+      adj,
+      rec,
+      key,
+      basisW,
+      basisLabel,
+      fa,
+      fs,
+      bmrRes,
+      teeRes,
+      macro,
+      compare,
+      proteinG,
       steps: [
         `Dasar berat badan: ${basisLabel} = ${fmt(basisW)} kg`,
         ...(bmrRes ? bmrRes.steps : []),
-        ...(form.stress === "burn" ? [`Faktor stres luka bakar TBSA ${fmt(num(form.tbsa))}% = ${fs}`] : []),
+        ...(form.stress === "burn"
+          ? [`Faktor stres luka bakar TBSA ${fmt(num(form.tbsa))}% = ${fs}`]
+          : []),
         ...teeRes.steps,
       ],
     };
@@ -98,7 +168,8 @@ export default function BmrCalculator() {
       "Tinggi badan (cm)": num(form.height),
       "% lemak tubuh": num(form.bodyFat) || null,
       "Pasien kritis/ICU": form.critical,
-      "Rumus dipilih": form.formula === "auto" ? `Otomatis: ${r.rec.reason}` : form.formula,
+      "Rumus dipilih":
+        form.formula === "auto" ? `Otomatis: ${r.rec.reason}` : form.formula,
       "Faktor aktivitas": r.fa,
       "Faktor stres": r.fs,
       "Protein (g/kg)": num(form.proteinPerKg),
@@ -118,7 +189,11 @@ export default function BmrCalculator() {
       {
         title: `Perbandingan rumus (dasar ${r.basisLabel})`,
         columns: ["Rumus", "BMR (kkal)", "TEE (kkal)"],
-        rows: r.compare.map((c) => [c.label, c.bmr ? Math.round(c.bmr) : "–", c.tee ? Math.round(c.tee) : "–"]),
+        rows: r.compare.map((c) => [
+          c.label,
+          c.bmr ? Math.round(c.bmr) : "–",
+          c.tee ? Math.round(c.tee) : "–",
+        ]),
       },
     ],
     steps: r.steps,
@@ -126,7 +201,10 @@ export default function BmrCalculator() {
 
   const formulaOptions = [
     { value: "auto", label: "Otomatis (decision tree)" },
-    ...Object.entries(BMR_FORMULAS).map(([k, v]) => ({ value: k, label: v.label })),
+    ...Object.entries(BMR_FORMULAS).map(([k, v]) => ({
+      value: k,
+      label: v.label,
+    })),
     { value: "espen", label: "ESPEN kkal/kg (pasien kritis)" },
   ];
 
@@ -137,10 +215,31 @@ export default function BmrCalculator() {
           <h2 className="font-semibold">Data pasien</h2>
           <SexField value={form.sex} onChange={set("sex")} />
           <div className="grid grid-cols-2 gap-x-4 sm:grid-cols-3">
-            <NumberField label="Umur" unit="th" value={form.age} onChange={set("age")} />
-            <NumberField label="Berat badan" unit="kg" value={form.weight} onChange={set("weight")} />
-            <NumberField label="Tinggi badan" unit="cm" value={form.height} onChange={set("height")} />
-            <NumberField label="% lemak (BIA)" unit="%" value={form.bodyFat} onChange={set("bodyFat")} hint="Opsional" />
+            <NumberField
+              label="Umur"
+              unit="th"
+              value={form.age}
+              onChange={set("age")}
+            />
+            <NumberField
+              label="Berat badan"
+              unit="kg"
+              value={form.weight}
+              onChange={set("weight")}
+            />
+            <NumberField
+              label="Tinggi badan"
+              unit="cm"
+              value={form.height}
+              onChange={set("height")}
+            />
+            <NumberField
+              label="% lemak (BIA)"
+              unit="%"
+              value={form.bodyFat}
+              onChange={set("bodyFat")}
+              hint="Opsional"
+            />
           </div>
           <label className="label mt-2 cursor-pointer gap-3 text-sm text-base-content">
             <input
@@ -155,23 +254,46 @@ export default function BmrCalculator() {
           <div className="divider my-3" />
           <h2 className="font-semibold">Rumus & faktor</h2>
           <div className="grid gap-x-4 sm:grid-cols-2">
-            <SelectField label="Rumus BMR" value={form.formula} onChange={set("formula")} options={formulaOptions} />
-            <SelectField label="Dasar berat badan" value={form.basis} onChange={set("basis")} options={WEIGHT_BASIS} />
+            <SelectField
+              label="Rumus BMR"
+              value={form.formula}
+              onChange={set("formula")}
+              options={formulaOptions}
+            />
+            <SelectField
+              label="Dasar berat badan"
+              value={form.basis}
+              onChange={set("basis")}
+              options={WEIGHT_BASIS}
+            />
           </div>
-          {(form.formula === "espen" || (form.formula === "auto" && form.critical)) && (
-            <NumberField label="ESPEN" unit="kkal/kg" value={form.espenKcal} onChange={set("espenKcal")} hint="Rentang 20–25 kkal/kg BB" />
+          {(form.formula === "espen" ||
+            (form.formula === "auto" && form.critical)) && (
+            <NumberField
+              label="ESPEN"
+              unit="kkal/kg"
+              value={form.espenKcal}
+              onChange={set("espenKcal")}
+              hint="Rentang 20–25 kkal/kg BB"
+            />
           )}
           <SelectField
             label="Faktor aktivitas (FA)"
             value={form.fa}
             onChange={set("fa")}
-            options={ACTIVITY_FACTORS.map((a) => ({ value: String(a.value), label: `${a.value} — ${a.label}` }))}
+            options={ACTIVITY_FACTORS.map((a) => ({
+              value: String(a.value),
+              label: `${a.value} — ${a.label}`,
+            }))}
           />
           <SelectField
             label="Faktor stres (FS)"
             value={form.stress}
             onChange={set("stress")}
-            options={STRESS_FACTORS.map((s) => ({ value: s.key, label: s.value ? `${s.value} — ${s.label}` : s.label }))}
+            options={STRESS_FACTORS.map((s) => ({
+              value: s.key,
+              label: s.value ? `${s.value} — ${s.label}` : s.label,
+            }))}
           />
           {form.stress === "burn" && (
             <NumberField
@@ -182,15 +304,35 @@ export default function BmrCalculator() {
               hint={`Faktor: ${burnStressFactor(num(form.tbsa)) ?? "–"} (<10%: 1,2; 10–19%: 1,35; 20–29%: 1,5; 30–49%: 1,75; ≥50%: 2,0)`}
             />
           )}
-          {form.stress === "custom" && <NumberField label="Faktor stres manual" value={form.customFs} onChange={set("customFs")} step="0.05" />}
+          {form.stress === "custom" && (
+            <NumberField
+              label="Faktor stres manual"
+              value={form.customFs}
+              onChange={set("customFs")}
+              step="0.05"
+            />
+          )}
 
           <div className="divider my-3" />
           <h2 className="font-semibold">Distribusi makronutrien</h2>
           <div className="grid grid-cols-2 gap-x-4">
-            <NumberField label="Protein" unit="g/kg" value={form.proteinPerKg} onChange={set("proteinPerKg")} step="0.1" />
-            <NumberField label="Lemak" unit="% energi" value={form.fatPct} onChange={set("fatPct")} />
+            <NumberField
+              label="Protein"
+              unit="g/kg"
+              value={form.proteinPerKg}
+              onChange={set("proteinPerKg")}
+              step="0.1"
+            />
+            <NumberField
+              label="Lemak"
+              unit="% energi"
+              value={form.fatPct}
+              onChange={set("fatPct")}
+            />
           </div>
-          <p className="text-xs text-base-content/60">Karbohidrat = sisa energi setelah protein dan lemak.</p>
+          <p className="text-xs text-base-content/60">
+            Karbohidrat = sisa energi setelah protein dan lemak.
+          </p>
         </div>
       </div>
 
@@ -203,22 +345,51 @@ export default function BmrCalculator() {
             </span>
           </div>
         )}
-        {r?.error && <div className="alert alert-warning alert-soft text-sm">{r.error}</div>}
+        {r?.error && (
+          <div className="alert alert-warning alert-soft text-sm">
+            {r.error}
+          </div>
+        )}
         <ResultSlip
           title="Total energy expenditure (TEE)"
           value={r?.teeRes?.value}
           unit="kkal/hari"
           steps={r?.steps}
-          empty={(!r || r.error) && "Isi umur, berat, dan tinggi badan untuk melihat hasil."}
+          empty={
+            (!r || r.error) &&
+            "Isi umur, berat, dan tinggi badan untuk melihat hasil."
+          }
         >
           {r?.teeRes && (
             <div>
-              {r.bmrRes && <ResultRow label={`BMR (${r.bmrRes.formula})`} value={r.bmrRes.value} digits={0} unit="kkal" />}
+              {r.bmrRes && (
+                <ResultRow
+                  label={`BMR (${r.bmrRes.formula})`}
+                  value={r.bmrRes.value}
+                  digits={0}
+                  unit="kkal"
+                />
+              )}
               <ResultRow label="IMT" value={r.b} unit="kg/m²" />
               <ResultRow label="FA × FS" value={`${r.fa} × ${r.fs}`} />
-              <ResultRow label={`Protein (${form.proteinPerKg} g/kg)`} value={r.macro.protein.gram} digits={0} unit={`g (${fmt(r.macro.protein.pct, 0)}%)`} />
-              <ResultRow label="Lemak" value={r.macro.fat.gram} digits={0} unit={`g (${fmt(r.macro.fat.pct, 0)}%)`} />
-              <ResultRow label="Karbohidrat" value={r.macro.carb.gram} digits={0} unit={`g (${fmt(r.macro.carb.pct, 0)}%)`} />
+              <ResultRow
+                label={`Protein (${form.proteinPerKg} g/kg)`}
+                value={r.macro.protein.gram}
+                digits={0}
+                unit={`g (${fmt(r.macro.protein.pct, 0)}%)`}
+              />
+              <ResultRow
+                label="Lemak"
+                value={r.macro.fat.gram}
+                digits={0}
+                unit={`g (${fmt(r.macro.fat.pct, 0)}%)`}
+              />
+              <ResultRow
+                label="Karbohidrat"
+                value={r.macro.carb.gram}
+                digits={0}
+                unit={`g (${fmt(r.macro.carb.pct, 0)}%)`}
+              />
             </div>
           )}
         </ResultSlip>
@@ -239,10 +410,19 @@ export default function BmrCalculator() {
               </thead>
               <tbody>
                 {r.compare.map((c) => (
-                  <tr key={c.key} className={c.key === r.key ? "bg-primary/5 font-semibold" : ""}>
+                  <tr
+                    key={c.key}
+                    className={
+                      c.key === r.key ? "bg-primary/5 font-semibold" : ""
+                    }
+                  >
                     <td>{c.label}</td>
-                    <td className="text-right tabular-nums">{c.bmr ? fmt(c.bmr, 0) : "–"}</td>
-                    <td className="text-right tabular-nums">{c.tee ? fmt(c.tee, 0) : "–"}</td>
+                    <td className="text-right tabular-nums">
+                      {c.bmr ? fmt(c.bmr, 0) : "–"}
+                    </td>
+                    <td className="text-right tabular-nums">
+                      {c.tee ? fmt(c.tee, 0) : "–"}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -253,4 +433,3 @@ export default function BmrCalculator() {
     </div>
   );
 }
-
