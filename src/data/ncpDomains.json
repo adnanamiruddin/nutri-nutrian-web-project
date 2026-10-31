@@ -1,0 +1,936 @@
+{
+ "_catatan": "Data contoh domain diagnosis gizi (PAGT/NCP) mengacu pada kode IDNT yang umum dipakai di Indonesia. Verifikasi kode & istilah dengan edisi eNCPT yang digunakan institusi.",
+ "domains": {
+  "NI": "Asupan (Intake)",
+  "NC": "Klinis (Clinical)",
+  "NB": "Perilaku & Lingkungan (Behavioral-Environmental)"
+ },
+ "items": [
+  {
+   "code": "NI-1.1",
+   "domain": "NI",
+   "class": "Keseimbangan energi",
+   "problem": "Peningkatan kebutuhan energi",
+   "problemEn": "Increased energy expenditure",
+   "definition": "Pengeluaran energi meningkat melebihi kebutuhan yang diperkirakan.",
+   "etiology": [
+    "Hipermetabolisme akibat penyakit/luka bakar",
+    "Peningkatan aktivitas fisik",
+    "Proses penyembuhan luka"
+   ],
+   "signs": [
+    "Penurunan BB tidak disengaja",
+    "Peningkatan suhu tubuh / demam",
+    "Hasil kalorimetri indirek di atas prediksi"
+   ]
+  },
+  {
+   "code": "NI-1.2",
+   "domain": "NI",
+   "class": "Keseimbangan energi",
+   "problem": "Asupan energi inadekuat",
+   "problemEn": "Inadequate energy intake",
+   "definition": "Asupan energi lebih rendah dari kebutuhan berdasarkan kalkulasi atau pengukuran.",
+   "etiology": [
+    "Penurunan nafsu makan",
+    "Kesulitan mengunyah/menelan",
+    "Akses pangan terbatas",
+    "Mual dan muntah"
+   ],
+   "signs": [
+    "Asupan energi < 80% kebutuhan",
+    "Penurunan BB",
+    "IMT < 18,5 kg/m²"
+   ]
+  },
+  {
+   "code": "NI-1.3",
+   "domain": "NI",
+   "class": "Keseimbangan energi",
+   "problem": "Asupan energi berlebih",
+   "problemEn": "Excessive energy intake",
+   "definition": "Asupan energi melebihi kebutuhan berdasarkan kalkulasi atau pengukuran.",
+   "etiology": [
+    "Kebiasaan makan porsi besar",
+    "Sering mengonsumsi makanan padat energi",
+    "Kurang pengetahuan terkait kebutuhan energi"
+   ],
+   "signs": [
+    "Asupan energi > 110% kebutuhan",
+    "Peningkatan BB",
+    "Persentase lemak tubuh tinggi"
+   ]
+  },
+  {
+   "code": "NI-1.4",
+   "domain": "NI",
+   "class": "Keseimbangan energi",
+   "problem": "Perkiraan asupan energi suboptimal",
+   "problemEn": "Predicted suboptimal energy intake",
+   "definition": "Perkiraan asupan energi di masa mendatang lebih rendah dari kebutuhan.",
+   "etiology": [
+    "Rencana tindakan bedah/puasa",
+    "Terapi kemoterapi terjadwal",
+    "Perubahan kemampuan makan yang diperkirakan"
+   ],
+   "signs": [
+    "Jadwal prosedur yang membutuhkan puasa",
+    "Riwayat asupan menurun pada terapi sebelumnya"
+   ]
+  },
+  {
+   "code": "NI-1.5",
+   "domain": "NI",
+   "class": "Keseimbangan energi",
+   "problem": "Perkiraan asupan energi berlebih",
+   "problemEn": "Predicted excessive energy intake",
+   "definition": "Perkiraan asupan energi di masa mendatang melebihi kebutuhan.",
+   "etiology": [
+    "Penurunan aktivitas fisik yang direncanakan",
+    "Penggunaan obat yang meningkatkan nafsu makan"
+   ],
+   "signs": [
+    "Rencana imobilisasi",
+    "Riwayat kenaikan BB saat terapi steroid"
+   ]
+  },
+  {
+   "code": "NI-2.1",
+   "domain": "NI",
+   "class": "Asupan oral/dukungan gizi",
+   "problem": "Asupan oral inadekuat",
+   "problemEn": "Inadequate oral intake",
+   "definition": "Asupan makanan/minuman oral lebih rendah dari kebutuhan.",
+   "etiology": [
+    "Anoreksia",
+    "Gangguan mengunyah/menelan",
+    "Keterbatasan akses makanan",
+    "Gangguan fungsi saluran cerna"
+   ],
+   "signs": [
+    "Asupan oral < 80% kebutuhan",
+    "Penurunan BB",
+    "Sisa makanan > 25%"
+   ]
+  },
+  {
+   "code": "NI-2.2",
+   "domain": "NI",
+   "class": "Asupan oral/dukungan gizi",
+   "problem": "Asupan oral berlebih",
+   "problemEn": "Excessive oral intake",
+   "definition": "Asupan makanan/minuman oral melebihi kebutuhan.",
+   "etiology": [
+    "Kebiasaan makan berlebih",
+    "Kurang pengetahuan porsi",
+    "Makan emosional"
+   ],
+   "signs": [
+    "Asupan > 110% kebutuhan",
+    "Kenaikan BB"
+   ]
+  },
+  {
+   "code": "NI-2.3",
+   "domain": "NI",
+   "class": "Asupan oral/dukungan gizi",
+   "problem": "Infus nutrisi enteral inadekuat",
+   "problemEn": "Inadequate enteral nutrition infusion",
+   "definition": "Pemberian nutrisi enteral kurang dari kebutuhan.",
+   "etiology": [
+    "Intoleransi enteral",
+    "Interupsi pemberian (puasa prosedur)",
+    "Laju infus tidak tepat"
+   ],
+   "signs": [
+    "Volume EN < 80% target",
+    "Penurunan BB",
+    "Residu lambung tinggi"
+   ]
+  },
+  {
+   "code": "NI-2.4",
+   "domain": "NI",
+   "class": "Asupan oral/dukungan gizi",
+   "problem": "Infus nutrisi enteral berlebih",
+   "problemEn": "Excessive enteral nutrition infusion",
+   "definition": "Pemberian nutrisi enteral melebihi kebutuhan.",
+   "etiology": [
+    "Kebutuhan dihitung berlebih",
+    "Laju infus tidak dipantau"
+   ],
+   "signs": [
+    "Kenaikan BB berlebih",
+    "Hiperglikemia",
+    "Volume EN > 110% target"
+   ]
+  },
+  {
+   "code": "NI-2.6",
+   "domain": "NI",
+   "class": "Asupan oral/dukungan gizi",
+   "problem": "Infus nutrisi parenteral inadekuat",
+   "problemEn": "Inadequate parenteral nutrition infusion",
+   "definition": "Pemberian nutrisi parenteral kurang dari kebutuhan.",
+   "etiology": [
+    "Keterbatasan akses vena",
+    "Restriksi cairan",
+    "Formulasi PN tidak sesuai"
+   ],
+   "signs": [
+    "Energi PN < 80% target",
+    "Penurunan BB",
+    "Albumin/prealbumin rendah"
+   ]
+  },
+  {
+   "code": "NI-2.7",
+   "domain": "NI",
+   "class": "Asupan oral/dukungan gizi",
+   "problem": "Infus nutrisi parenteral berlebih",
+   "problemEn": "Excessive parenteral nutrition infusion",
+   "definition": "Pemberian nutrisi parenteral melebihi kebutuhan.",
+   "etiology": [
+    "Kebutuhan dihitung berlebih",
+    "Laju infus dekstrosa terlalu tinggi"
+   ],
+   "signs": [
+    "Hiperglikemia",
+    "Peningkatan enzim hati",
+    "Hipertrigliseridemia"
+   ]
+  },
+  {
+   "code": "NI-2.9",
+   "domain": "NI",
+   "class": "Asupan oral/dukungan gizi",
+   "problem": "Penerimaan makanan terbatas",
+   "problemEn": "Limited food acceptance",
+   "definition": "Asupan oral tidak sesuai kebutuhan karena keterbatasan penerimaan makanan.",
+   "etiology": [
+    "Gangguan sensoris",
+    "Pola makan pilih-pilih",
+    "Gangguan perilaku makan"
+   ],
+   "signs": [
+    "Menolak kelompok makanan tertentu",
+    "Variasi makanan rendah"
+   ]
+  },
+  {
+   "code": "NI-3.1",
+   "domain": "NI",
+   "class": "Asupan cairan",
+   "problem": "Asupan cairan inadekuat",
+   "problemEn": "Inadequate fluid intake",
+   "definition": "Asupan cairan lebih rendah dari kebutuhan.",
+   "etiology": [
+    "Gangguan persepsi haus",
+    "Kesulitan menelan cairan",
+    "Keterbatasan akses air minum"
+   ],
+   "signs": [
+    "Membran mukosa kering",
+    "Turgor kulit menurun",
+    "Urin pekat",
+    "Peningkatan BUN/Kreatinin",
+    "Natrium serum tinggi"
+   ]
+  },
+  {
+   "code": "NI-3.2",
+   "domain": "NI",
+   "class": "Asupan cairan",
+   "problem": "Asupan cairan berlebih",
+   "problemEn": "Excessive fluid intake",
+   "definition": "Asupan cairan melebihi kebutuhan.",
+   "etiology": [
+    "Gangguan fungsi ginjal",
+    "Gagal jantung",
+    "Kurang pengetahuan restriksi cairan"
+   ],
+   "signs": [
+    "Edema",
+    "Kenaikan BB antar-dialisis > 2 kg",
+    "Natrium serum rendah",
+    "Sesak napas"
+   ]
+  },
+  {
+   "code": "NI-4.3",
+   "domain": "NI",
+   "class": "Zat bioaktif",
+   "problem": "Asupan alkohol berlebih",
+   "problemEn": "Excessive alcohol intake",
+   "definition": "Asupan alkohol melebihi batas aman atau dikontraindikasikan.",
+   "etiology": [
+    "Ketergantungan alkohol",
+    "Kurang pengetahuan dampak alkohol"
+   ],
+   "signs": [
+    "Asupan alkohol > batas anjuran",
+    "Peningkatan enzim hati (SGOT/SGPT/GGT)"
+   ]
+  },
+  {
+   "code": "NI-5.1",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Peningkatan kebutuhan zat gizi",
+   "problemEn": "Increased nutrient needs",
+   "definition": "Kebutuhan zat gizi tertentu meningkat dibanding standar.",
+   "etiology": [
+    "Malabsorpsi",
+    "Peningkatan kebutuhan akibat penyakit/luka",
+    "Kehamilan/menyusui",
+    "Kehilangan zat gizi meningkat"
+   ],
+   "signs": [
+    "Penurunan BB",
+    "Kadar zat gizi tertentu rendah",
+    "Luka/ulkus dekubitus"
+   ]
+  },
+  {
+   "code": "NI-5.2",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Malnutrisi energi protein yang nyata",
+   "problemEn": "Malnutrition",
+   "definition": "Asupan energi dan protein inadekuat dalam jangka waktu lama yang menyebabkan kehilangan jaringan tubuh.",
+   "etiology": [
+    "Penyakit kronis",
+    "Asupan tidak adekuat jangka panjang",
+    "Faktor sosial ekonomi"
+   ],
+   "signs": [
+    "Penurunan BB > 5% dalam 1 bulan",
+    "Kehilangan massa otot",
+    "Kehilangan lemak subkutan",
+    "LILA < persentil 10"
+   ]
+  },
+  {
+   "code": "NI-5.3",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan energi protein inadekuat",
+   "problemEn": "Inadequate protein-energy intake",
+   "definition": "Asupan energi dan protein kurang dari kebutuhan dalam jangka pendek.",
+   "etiology": [
+    "Penurunan nafsu makan",
+    "Gangguan saluran cerna",
+    "Kondisi katabolik"
+   ],
+   "signs": [
+    "Asupan energi dan protein < 80% kebutuhan",
+    "Penurunan BB ringan"
+   ]
+  },
+  {
+   "code": "NI-5.4",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Penurunan kebutuhan zat gizi",
+   "problemEn": "Decreased nutrient needs",
+   "definition": "Kebutuhan zat gizi tertentu menurun dibanding standar.",
+   "etiology": [
+    "Gangguan fungsi ginjal",
+    "Gangguan fungsi hati",
+    "Gagal jantung"
+   ],
+   "signs": [
+    "eGFR menurun",
+    "Kadar kalium/fosfor serum tinggi",
+    "Edema/asites"
+   ]
+  },
+  {
+   "code": "NI-5.5",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Ketidakseimbangan zat gizi",
+   "problemEn": "Imbalance of nutrients",
+   "definition": "Asupan zat gizi tidak seimbang secara berbahaya.",
+   "etiology": [
+    "Konsumsi suplemen dosis tinggi",
+    "Diet ekstrem"
+   ],
+   "signs": [
+    "Asupan suplemen melebihi UL",
+    "Ketidakseimbangan elektrolit"
+   ]
+  },
+  {
+   "code": "NI-5.6.2",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan lemak berlebih",
+   "problemEn": "Excessive fat intake",
+   "definition": "Asupan lemak melebihi kebutuhan.",
+   "etiology": [
+    "Sering mengonsumsi gorengan",
+    "Kurang pengetahuan sumber lemak"
+   ],
+   "signs": [
+    "Asupan lemak > 30% energi",
+    "Kolesterol LDL tinggi",
+    "Trigliserida tinggi"
+   ]
+  },
+  {
+   "code": "NI-5.6.3",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan jenis lemak tidak tepat",
+   "problemEn": "Intake of types of fats inconsistent with needs",
+   "definition": "Asupan jenis lemak tidak sesuai kebutuhan (lemak jenuh/trans tinggi).",
+   "etiology": [
+    "Kebiasaan mengonsumsi santan kental/jeroan",
+    "Kurang pengetahuan jenis lemak"
+   ],
+   "signs": [
+    "Asupan lemak jenuh > 10% energi",
+    "LDL/kolesterol total tinggi"
+   ]
+  },
+  {
+   "code": "NI-5.7.1",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan protein inadekuat",
+   "problemEn": "Inadequate protein intake",
+   "definition": "Asupan protein lebih rendah dari kebutuhan.",
+   "etiology": [
+    "Keterbatasan akses pangan sumber protein",
+    "Peningkatan kebutuhan protein",
+    "Pembatasan diet berlebihan"
+   ],
+   "signs": [
+    "Asupan protein < 80% kebutuhan",
+    "Albumin serum rendah",
+    "Kehilangan massa otot"
+   ]
+  },
+  {
+   "code": "NI-5.7.2",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan protein berlebih",
+   "problemEn": "Excessive protein intake",
+   "definition": "Asupan protein melebihi kebutuhan.",
+   "etiology": [
+    "Kurang pengetahuan diet rendah protein",
+    "Penggunaan suplemen protein"
+   ],
+   "signs": [
+    "Asupan protein > 110% preskripsi",
+    "BUN meningkat",
+    "Ureum tinggi"
+   ]
+  },
+  {
+   "code": "NI-5.8.2",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan karbohidrat berlebih",
+   "problemEn": "Excessive carbohydrate intake",
+   "definition": "Asupan karbohidrat melebihi kebutuhan.",
+   "etiology": [
+    "Kebiasaan minum minuman manis",
+    "Kurang pengetahuan diet DM"
+   ],
+   "signs": [
+    "Asupan karbohidrat > 60% energi",
+    "Glukosa darah tinggi",
+    "HbA1c tinggi"
+   ]
+  },
+  {
+   "code": "NI-5.8.4",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan karbohidrat tidak konsisten",
+   "problemEn": "Inconsistent carbohydrate intake",
+   "definition": "Asupan karbohidrat tidak konsisten waktu/jumlahnya sehingga mengganggu kontrol glukosa.",
+   "etiology": [
+    "Jadwal makan tidak teratur",
+    "Kurang pengetahuan pengaturan makan DM"
+   ],
+   "signs": [
+    "Fluktuasi glukosa darah",
+    "Episode hipoglikemia"
+   ]
+  },
+  {
+   "code": "NI-5.8.5",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan serat inadekuat",
+   "problemEn": "Inadequate fiber intake",
+   "definition": "Asupan serat lebih rendah dari kebutuhan.",
+   "etiology": [
+    "Rendah konsumsi sayur dan buah",
+    "Kurang pengetahuan sumber serat"
+   ],
+   "signs": [
+    "Asupan serat < 25 g/hari",
+    "Konstipasi"
+   ]
+  },
+  {
+   "code": "NI-5.9.1",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan vitamin inadekuat",
+   "problemEn": "Inadequate vitamin intake",
+   "definition": "Asupan satu atau lebih vitamin lebih rendah dari kebutuhan.",
+   "etiology": [
+    "Asupan sayur/buah rendah",
+    "Malabsorpsi"
+   ],
+   "signs": [
+    "Asupan vitamin < AKG",
+    "Tanda klinis defisiensi vitamin"
+   ]
+  },
+  {
+   "code": "NI-5.10.1",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan mineral inadekuat",
+   "problemEn": "Inadequate mineral intake",
+   "definition": "Asupan satu atau lebih mineral lebih rendah dari kebutuhan.",
+   "etiology": [
+    "Asupan sumber zat besi/kalsium rendah",
+    "Kehilangan darah kronis"
+   ],
+   "signs": [
+    "Hb rendah",
+    "Ferritin rendah",
+    "Konjungtiva anemis"
+   ]
+  },
+  {
+   "code": "NI-5.10.2",
+   "domain": "NI",
+   "class": "Zat gizi",
+   "problem": "Asupan mineral berlebih",
+   "problemEn": "Excessive mineral intake",
+   "definition": "Asupan satu atau lebih mineral melebihi kebutuhan (mis. natrium, kalium, fosfor).",
+   "etiology": [
+    "Kebiasaan makanan asin/olahan",
+    "Kurang pengetahuan diet rendah garam"
+   ],
+   "signs": [
+    "Asupan natrium > 2.000 mg/hari",
+    "Tekanan darah tinggi",
+    "Kalium/fosfor serum tinggi"
+   ]
+  },
+  {
+   "code": "NC-1.1",
+   "domain": "NC",
+   "class": "Fungsional",
+   "problem": "Kesulitan menelan",
+   "problemEn": "Swallowing difficulty",
+   "definition": "Gangguan pergerakan makanan/cairan dari mulut ke lambung.",
+   "etiology": [
+    "Stroke",
+    "Gangguan neuromuskular",
+    "Obstruksi mekanis"
+   ],
+   "signs": [
+    "Batuk/tersedak saat makan",
+    "Hasil skrining disfagia positif",
+    "Asupan oral menurun"
+   ]
+  },
+  {
+   "code": "NC-1.2",
+   "domain": "NC",
+   "class": "Fungsional",
+   "problem": "Kesulitan mengunyah/menggigit",
+   "problemEn": "Biting/chewing difficulty",
+   "definition": "Gangguan kemampuan menggigit/mengunyah makanan.",
+   "etiology": [
+    "Gigi tanggal/gigi palsu tidak pas",
+    "Gangguan neurologis",
+    "Mukositis"
+   ],
+   "signs": [
+    "Menghindari makanan bertekstur keras",
+    "Asupan menurun",
+    "Kondisi gigi buruk"
+   ]
+  },
+  {
+   "code": "NC-1.3",
+   "domain": "NC",
+   "class": "Fungsional",
+   "problem": "Kesulitan menyusui",
+   "problemEn": "Breastfeeding difficulty",
+   "definition": "Ketidakmampuan mempertahankan pemberian ASI.",
+   "etiology": [
+    "Pelekatan bayi tidak tepat",
+    "Produksi ASI rendah",
+    "Puting lecet"
+   ],
+   "signs": [
+    "Bayi rewel/tidak puas",
+    "Kenaikan BB bayi tidak adekuat"
+   ]
+  },
+  {
+   "code": "NC-1.4",
+   "domain": "NC",
+   "class": "Fungsional",
+   "problem": "Perubahan fungsi gastrointestinal",
+   "problemEn": "Altered GI function",
+   "definition": "Perubahan pencernaan, absorpsi, atau eliminasi.",
+   "etiology": [
+    "Penyakit inflamasi usus",
+    "Reseksi usus",
+    "Efek obat/kemoterapi"
+   ],
+   "signs": [
+    "Diare",
+    "Konstipasi",
+    "Mual/muntah",
+    "Kembung"
+   ]
+  },
+  {
+   "code": "NC-2.1",
+   "domain": "NC",
+   "class": "Biokimia",
+   "problem": "Gangguan utilisasi zat gizi",
+   "problemEn": "Impaired nutrient utilization",
+   "definition": "Perubahan kemampuan memetabolisme zat gizi.",
+   "etiology": [
+    "Gangguan metabolik bawaan",
+    "Penyakit hati",
+    "Defisiensi enzim"
+   ],
+   "signs": [
+    "Nilai laboratorium abnormal terkait metabolisme zat gizi"
+   ]
+  },
+  {
+   "code": "NC-2.2",
+   "domain": "NC",
+   "class": "Biokimia",
+   "problem": "Perubahan nilai laboratorium terkait gizi",
+   "problemEn": "Altered nutrition-related laboratory values",
+   "definition": "Perubahan nilai laboratorium akibat penyakit/kondisi yang memengaruhi zat gizi.",
+   "etiology": [
+    "Gangguan fungsi ginjal",
+    "Gangguan fungsi hati",
+    "Gangguan endokrin (DM)"
+   ],
+   "signs": [
+    "Glukosa darah tinggi",
+    "Ureum/kreatinin tinggi",
+    "Kalium/fosfor serum tinggi",
+    "Albumin rendah"
+   ]
+  },
+  {
+   "code": "NC-2.3",
+   "domain": "NC",
+   "class": "Biokimia",
+   "problem": "Interaksi makanan dan obat",
+   "problemEn": "Food-medication interaction",
+   "definition": "Interaksi antara makanan dan obat yang menurunkan efektivitas obat atau status gizi.",
+   "etiology": [
+    "Penggunaan warfarin dengan asupan vitamin K tidak konsisten",
+    "Polifarmasi"
+   ],
+   "signs": [
+    "INR tidak stabil",
+    "Perubahan nilai laboratorium terkait obat"
+   ]
+  },
+  {
+   "code": "NC-3.1",
+   "domain": "NC",
+   "class": "Berat badan",
+   "problem": "Berat badan kurang",
+   "problemEn": "Underweight",
+   "definition": "Berat badan rendah dibanding standar acuan.",
+   "etiology": [
+    "Asupan energi inadekuat",
+    "Peningkatan kebutuhan energi",
+    "Penyakit kronis"
+   ],
+   "signs": [
+    "IMT < 18,5 kg/m²",
+    "BB/TB atau IMT/U < -2 SD",
+    "LILA rendah"
+   ]
+  },
+  {
+   "code": "NC-3.2",
+   "domain": "NC",
+   "class": "Berat badan",
+   "problem": "Penurunan berat badan tidak diharapkan",
+   "problemEn": "Unintended weight loss",
+   "definition": "Penurunan BB yang tidak disengaja.",
+   "etiology": [
+    "Asupan menurun",
+    "Hipermetabolisme",
+    "Depresi"
+   ],
+   "signs": [
+    "Penurunan BB > 5% dalam 1 bulan",
+    "Penurunan BB > 10% dalam 6 bulan"
+   ]
+  },
+  {
+   "code": "NC-3.3",
+   "domain": "NC",
+   "class": "Berat badan",
+   "problem": "Kelebihan berat badan/obesitas",
+   "problemEn": "Overweight/obesity",
+   "definition": "Berat badan atau lemak tubuh berlebih dibanding standar.",
+   "etiology": [
+    "Asupan energi berlebih",
+    "Aktivitas fisik kurang",
+    "Faktor genetik/hormonal"
+   ],
+   "signs": [
+    "IMT ≥ 25 kg/m² (Asia-Pasifik)",
+    "Lingkar perut > 90 cm (L) / > 80 cm (P)",
+    "Persentase lemak tubuh tinggi"
+   ]
+  },
+  {
+   "code": "NC-3.4",
+   "domain": "NC",
+   "class": "Berat badan",
+   "problem": "Peningkatan berat badan tidak diharapkan",
+   "problemEn": "Unintended weight gain",
+   "definition": "Kenaikan BB yang tidak disengaja.",
+   "etiology": [
+    "Retensi cairan",
+    "Penggunaan obat (steroid)",
+    "Penurunan aktivitas"
+   ],
+   "signs": [
+    "Kenaikan BB melebihi target",
+    "Edema"
+   ]
+  },
+  {
+   "code": "NB-1.1",
+   "domain": "NB",
+   "class": "Pengetahuan & kepercayaan",
+   "problem": "Kurang pengetahuan terkait makanan dan gizi",
+   "problemEn": "Food and nutrition-related knowledge deficit",
+   "definition": "Pengetahuan tidak lengkap atau tidak akurat terkait gizi.",
+   "etiology": [
+    "Belum pernah mendapat edukasi gizi",
+    "Informasi yang keliru",
+    "Tingkat literasi rendah"
+   ],
+   "signs": [
+    "Tidak dapat menjelaskan anjuran diet",
+    "Pilihan makanan tidak sesuai anjuran"
+   ]
+  },
+  {
+   "code": "NB-1.2",
+   "domain": "NB",
+   "class": "Pengetahuan & kepercayaan",
+   "problem": "Kepercayaan/sikap yang salah terkait gizi",
+   "problemEn": "Harmful beliefs/attitudes about food or nutrition",
+   "definition": "Kepercayaan atau sikap terhadap makanan yang bertentangan dengan prinsip gizi.",
+   "etiology": [
+    "Mitos/pantangan makanan",
+    "Pengaruh budaya"
+   ],
+   "signs": [
+    "Menghindari kelompok makanan tertentu tanpa indikasi"
+   ]
+  },
+  {
+   "code": "NB-1.3",
+   "domain": "NB",
+   "class": "Pengetahuan & kepercayaan",
+   "problem": "Belum siap untuk diet/perubahan gaya hidup",
+   "problemEn": "Not ready for diet/lifestyle change",
+   "definition": "Kurangnya kesiapan untuk mengubah perilaku terkait gizi.",
+   "etiology": [
+    "Penolakan terhadap kondisi",
+    "Kurang dukungan sosial"
+   ],
+   "signs": [
+    "Menyatakan tidak ingin berubah",
+    "Tidak hadir pada konseling lanjutan"
+   ]
+  },
+  {
+   "code": "NB-1.4",
+   "domain": "NB",
+   "class": "Pengetahuan & kepercayaan",
+   "problem": "Kurang dapat memonitor diri sendiri",
+   "problemEn": "Self-monitoring deficit",
+   "definition": "Kurangnya pencatatan/pemantauan kemajuan diri.",
+   "etiology": [
+    "Kurang keterampilan",
+    "Kurang motivasi"
+   ],
+   "signs": [
+    "Catatan makan tidak lengkap",
+    "Tidak memantau glukosa darah mandiri"
+   ]
+  },
+  {
+   "code": "NB-1.5",
+   "domain": "NB",
+   "class": "Pengetahuan & kepercayaan",
+   "problem": "Gangguan pola makan",
+   "problemEn": "Disordered eating pattern",
+   "definition": "Pola makan yang tidak sehat terkait masalah psikologis.",
+   "etiology": [
+    "Gangguan citra tubuh",
+    "Stres psikologis"
+   ],
+   "signs": [
+    "Pola makan berlebih/membatasi ekstrem",
+    "Penggunaan pencahar"
+   ]
+  },
+  {
+   "code": "NB-1.6",
+   "domain": "NB",
+   "class": "Pengetahuan & kepercayaan",
+   "problem": "Keterbatasan kepatuhan terhadap rekomendasi gizi",
+   "problemEn": "Limited adherence to nutrition-related recommendations",
+   "definition": "Kurangnya penerapan anjuran gizi yang telah disepakati.",
+   "etiology": [
+    "Kurang dukungan keluarga",
+    "Biaya",
+    "Kurang pemahaman"
+   ],
+   "signs": [
+    "Asupan tidak sesuai preskripsi",
+    "Hasil laboratorium tidak membaik"
+   ]
+  },
+  {
+   "code": "NB-1.7",
+   "domain": "NB",
+   "class": "Pengetahuan & kepercayaan",
+   "problem": "Pemilihan makanan yang salah",
+   "problemEn": "Undesirable food choices",
+   "definition": "Pemilihan makanan/minuman tidak sesuai anjuran gizi.",
+   "etiology": [
+    "Kurang pengetahuan",
+    "Preferensi rasa",
+    "Ketersediaan makanan"
+   ],
+   "signs": [
+    "Sering mengonsumsi makanan cepat saji",
+    "Konsumsi sayur/buah rendah"
+   ]
+  },
+  {
+   "code": "NB-2.1",
+   "domain": "NB",
+   "class": "Aktivitas & fungsi fisik",
+   "problem": "Aktivitas fisik kurang",
+   "problemEn": "Physical inactivity",
+   "definition": "Aktivitas fisik rendah dibanding anjuran.",
+   "etiology": [
+    "Gaya hidup sedenter",
+    "Keterbatasan fisik",
+    "Kurang waktu"
+   ],
+   "signs": [
+    "Aktivitas fisik < 150 menit/minggu",
+    "Waktu duduk/layar tinggi"
+   ]
+  },
+  {
+   "code": "NB-2.2",
+   "domain": "NB",
+   "class": "Aktivitas & fungsi fisik",
+   "problem": "Aktivitas fisik berlebih",
+   "problemEn": "Excessive physical activity",
+   "definition": "Aktivitas fisik melebihi kebutuhan yang aman.",
+   "etiology": [
+    "Gangguan pola makan",
+    "Tekanan performa"
+   ],
+   "signs": [
+    "Latihan berlebihan meski cedera",
+    "Penurunan BB"
+   ]
+  },
+  {
+   "code": "NB-2.4",
+   "domain": "NB",
+   "class": "Aktivitas & fungsi fisik",
+   "problem": "Kemampuan menyiapkan makanan terganggu",
+   "problemEn": "Impaired ability to prepare foods/meals",
+   "definition": "Ketidakmampuan menyiapkan makanan.",
+   "etiology": [
+    "Keterbatasan fisik",
+    "Gangguan kognitif"
+   ],
+   "signs": [
+    "Bergantung pada orang lain untuk menyiapkan makanan"
+   ]
+  },
+  {
+   "code": "NB-2.6",
+   "domain": "NB",
+   "class": "Aktivitas & fungsi fisik",
+   "problem": "Kesulitan makan sendiri",
+   "problemEn": "Self-feeding difficulty",
+   "definition": "Gangguan kemampuan memasukkan makanan ke mulut sendiri.",
+   "etiology": [
+    "Kelemahan otot",
+    "Gangguan koordinasi",
+    "Penurunan kesadaran"
+   ],
+   "signs": [
+    "Membutuhkan bantuan saat makan",
+    "Sisa makanan banyak"
+   ]
+  },
+  {
+   "code": "NB-3.1",
+   "domain": "NB",
+   "class": "Keamanan & akses makanan",
+   "problem": "Asupan makanan tidak aman",
+   "problemEn": "Intake of unsafe food",
+   "definition": "Asupan makanan/minuman yang terkontaminasi atau berbahaya.",
+   "etiology": [
+    "Penyimpanan makanan tidak tepat",
+    "Kurang pengetahuan keamanan pangan"
+   ],
+   "signs": [
+    "Riwayat keracunan makanan",
+    "Diare akut"
+   ]
+  },
+  {
+   "code": "NB-3.2",
+   "domain": "NB",
+   "class": "Keamanan & akses makanan",
+   "problem": "Akses makanan terbatas",
+   "problemEn": "Limited access to food",
+   "definition": "Keterbatasan kemampuan memperoleh makanan bergizi.",
+   "etiology": [
+    "Keterbatasan ekonomi",
+    "Lokasi jauh dari sumber pangan"
+   ],
+   "signs": [
+    "Frekuensi makan berkurang",
+    "Variasi makanan rendah"
+   ]
+  }
+ ]
+}

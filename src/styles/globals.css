@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: false;
+}
+
+/* Tema Nutri-Nutrian: emerald/teal di atas putih & slate */
+@plugin "daisyui/theme" {
+  name: "nutrinutrian";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-100: #ffffff;
+  --color-base-200: #f2f6f5;
+  --color-base-300: #dce5e2;
+  --color-base-content: #1e293b;
+  --color-primary: #0f766e;
+  --color-primary-content: #ffffff;
+  --color-secondary: #047857;
+  --color-secondary-content: #ffffff;
+  --color-accent: #0e7490;
+  --color-accent-content: #ffffff;
+  --color-neutral: #334155;
+  --color-neutral-content: #f8fafc;
+  --color-info: #0369a1;
+  --color-info-content: #ffffff;
+  --color-success: #15803d;
+  --color-success-content: #ffffff;
+  --color-warning: #b45309;
+  --color-warning-content: #ffffff;
+  --color-error: #b91c1c;
+  --color-error-content: #ffffff;
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.85rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-feature-settings: "ss01";
+}
+
+/* Fokus keyboard yang jelas */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Logo */
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.7rem;
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+  font-size: 1.25rem;
+}
+
+/* Panel pembuka: kertas grafik rekam medis */
+.hero-panel {
+  border: 1px solid var(--color-base-300);
+  background-color: var(--color-base-100);
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--color-primary) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--color-primary) 7%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: -1px -1px;
+}
+
+/* Lembar hasil: garis tepi kiri sebagai penanda slip klinis */
+.result-slip {
+  border-left: 4px solid var(--color-primary);
+}
+.calc-step {
+  position: relative;
+  padding-left: 1.1rem;
+}
+.calc-step::before {
+  content: "=";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Pita Z-score: −4 … +4 (−3 = 12,5%, −2 = 25%, +1 = 62,5%, +2 = 75%, +3 = 87,5%) */
+.zband {
+  background: linear-gradient(
+    90deg,
+    var(--color-error) 0 12.5%,
+    var(--color-warning) 12.5% 25%,
+    var(--color-success) 25% 62.5%,
+    color-mix(in oklab, var(--color-warning) 70%, var(--color-success)) 62.5% 75%,
+    var(--color-warning) 75% 87.5%,
+    var(--color-error) 87.5% 100%
+  );
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Tampilan cetak */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  body,
+  .drawer-content {
+    background: #fff !important;
+  }
+  .drawer-side,
+  .navbar,
+  .toast {
+    display: none !important;
+  }
+  .result-slip {
+    break-inside: avoid;
+  }
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+}
