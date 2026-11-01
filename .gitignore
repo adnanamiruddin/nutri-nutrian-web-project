@@ -6,4 +6,4 @@ out
 !.env.example
 *.log
 .DS_Store
-data_source
+data-source
