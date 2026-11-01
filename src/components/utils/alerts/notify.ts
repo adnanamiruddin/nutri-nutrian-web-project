@@ -10,20 +10,25 @@ export type NotifyTone = "success" | "error" | "info" | "warning";
  * (termasuk SweetAlert) selalu tertutup olehnya. Jika ada dialog terbuka, render SweetAlert di dalamnya.
  */
 export const swalTarget = (): HTMLElement | string =>
-  (typeof document !== "undefined" && document.querySelector<HTMLElement>("dialog[open]")) || "body";
+  (typeof document !== "undefined" &&
+    document.querySelector<HTMLElement>("dialog[open]")) ||
+  "body";
 
 /** Tunggu sampai semua <dialog> modal tertutup (dipakai sebelum membuka SweetAlert dari tombol di dalam modal) */
 export async function waitForDialogsClosed(timeoutMs = 600): Promise<void> {
   if (typeof document === "undefined") return;
   const start = Date.now();
-  while (document.querySelector("dialog[open]") && Date.now() - start < timeoutMs) {
+  while (
+    document.querySelector("dialog[open]") &&
+    Date.now() - start < timeoutMs
+  ) {
     await new Promise((resolve) => requestAnimationFrame(resolve));
   }
 }
 
 const Toast = Swal.mixin({
   toast: true,
-  position: "bottom-end",
+  position: "top-end",
   showConfirmButton: false,
   timer: 3200,
   timerProgressBar: true,
