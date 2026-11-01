@@ -1,28 +1,42 @@
 {
   "name": "nutri-nutrian",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "Nutri-Nutrian: alat bantu kalkulasi dan analisis gizi (frontend standalone, Next.js Pages Router)",
+  "description": "Nutri-Nutrian: alat bantu kalkulasi dan analisis gizi (frontend Next.js Pages Router + TypeScript)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit",
     "data:import": "python scripts/excel_to_json.py"
   },
   "dependencies": {
+    "chart.js": "4.5.1",
+    "jspdf": "4.2.1",
+    "jspdf-autotable": "5.0.8",
     "next": "15.5.28",
+    "nprogress": "0.2.0",
     "react": "19.1.10",
     "react-dom": "19.1.10",
     "react-icons": "5.5.0",
-    "jspdf": "4.2.1",
-    "jspdf-autotable": "5.0.8",
+    "sweetalert2": "11.26.25",
+    "sweetalert2-react-content": "5.1.2",
     "write-excel-file": "4.1.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "3.3.1",
     "@tailwindcss/postcss": "4.1.13",
+    "@types/node": "22.20.5",
+    "@types/nprogress": "0.2.3",
+    "@types/react": "19.1.17",
+    "@types/react-dom": "19.1.11",
     "daisyui": "5.1.13",
+    "eslint": "9.39.5",
+    "eslint-config-next": "15.5.28",
     "postcss": "8.5.29",
-    "tailwindcss": "4.1.13"
+    "tailwindcss": "4.1.13",
+    "typescript": "5.9.3"
   },
   "overrides": {
     "postcss": "8.5.29"

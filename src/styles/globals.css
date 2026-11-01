@@ -67,6 +67,12 @@ body {
   color: var(--color-primary-content);
   font-size: 1.25rem;
 }
+.brand-mark-sm {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.55rem;
+  font-size: 1rem;
+}
 
 /* Panel pembuka: kertas grafik rekam medis */
 .hero-panel {
@@ -109,6 +115,46 @@ body {
   opacity: 0.55;
 }
 
+/* NProgress: warna primary */
+#nprogress {
+  pointer-events: none;
+}
+#nprogress .bar {
+  background: var(--color-primary);
+  height: 3px;
+  z-index: 1100;
+}
+#nprogress .peg {
+  box-shadow:
+    0 0 10px var(--color-primary),
+    0 0 5px var(--color-primary);
+}
+
+/* SweetAlert2: selaraskan dengan tema */
+.swal2-popup {
+  font-family: var(--font-sans);
+  border-radius: var(--radius-box);
+  color: var(--color-base-content);
+}
+.swal2-popup.swal2-toast {
+  box-shadow: 0 6px 20px rgb(15 23 42 / 0.12);
+}
+.swal2-timer-progress-bar {
+  background: color-mix(in oklab, var(--color-primary) 45%, transparent);
+}
+.swal2-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary) 20%, transparent);
+}
+.swal2-icon.nn-swal-guard-icon {
+  border-color: transparent;
+  color: var(--color-warning);
+}
+.swal2-validation-message {
+  background: color-mix(in oklab, var(--color-error) 8%, transparent);
+  color: var(--color-error);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -130,7 +176,8 @@ body {
   }
   .drawer-side,
   .navbar,
-  .toast {
+  .swal2-container,
+  #nprogress {
     display: none !important;
   }
   .result-slip {
